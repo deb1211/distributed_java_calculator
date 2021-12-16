@@ -1,4 +1,4 @@
-# Distributed calculator.
+## Distributed calculator.
 
 ![](./diagram.png)
 
