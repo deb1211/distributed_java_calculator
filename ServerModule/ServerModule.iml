@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="openjdk-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="javax.servlet" level="project" />
+    <orderEntry type="library" name="json-20210307" level="project" />
   </component>
 </module>
