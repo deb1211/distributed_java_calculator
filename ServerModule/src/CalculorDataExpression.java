@@ -11,6 +11,18 @@ public class CalculorDataExpression {
         this.calculorDataExpressionID = calculorDataExpressionID;
     }
 
+    public String getOperator() {
+        return operator;
+    }
+
+    public String getOperandFirst() {
+        return operandFirst;
+    }
+
+    public String getOperandSecond() {
+        return operandSecond;
+    }
+
     public String getExpressionID() {
         return calculorDataExpressionID;
     }

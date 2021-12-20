@@ -7,7 +7,7 @@ public class CalculatorDataStorage {
     private Map<String, CalculorDataExpression> calculorDataExpressionMap = new HashMap<>();
 
     private static CalculatorDataStorage calculatorDataStorage = new CalculatorDataStorage();
-    public static CalculatorDataStorage getInstance(){
+    public static CalculatorDataStorage getInstance() {
         return calculatorDataStorage;
     }
 
