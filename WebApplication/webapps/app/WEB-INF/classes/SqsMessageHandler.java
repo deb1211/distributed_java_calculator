@@ -7,7 +7,7 @@ import software.amazon.awssdk.services.sqs.model.Message;
 import java.net.URI;
 import java.util.List;
 
-public class SqsMessageHandler {
+public class SqsMessageHandler implements MessageHandler{
 
     String accessKeyId = "foo";
     String secretAccessKey = "bar";
@@ -15,11 +15,6 @@ public class SqsMessageHandler {
             StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKeyId, secretAccessKey)));
 
     CreateQueueResponse queue;
-    private Sqs sqs;
-
-    public SqsMessageHandler(Sqs sqs) {
-        this.sqs = sqs;
-    }
 
     public String getAccessKeyId() {
         return accessKeyId;

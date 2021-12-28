@@ -3,6 +3,8 @@ public class CalculorDataExpression {
     private String operandFirst;
     private String operandSecond;
     private String calculorDataExpressionID;
+    private String calculatedResult;
+    private boolean requireCalculation = true;
 
     public CalculorDataExpression(String operator, String operandFirst, String operandSecond, String calculorDataExpressionID) {
         this.operator = operator;
@@ -23,8 +25,19 @@ public class CalculorDataExpression {
         return operandSecond;
     }
 
+    public String getCalculatedResult() {
+        return calculatedResult;
+    }
+
     public String getExpressionID() {
         return calculorDataExpressionID;
     }
 
+    public void setRequireCalculation(boolean requireCalculation) {
+        this.requireCalculation = requireCalculation;
+    }
+
+    public void setCalculatedResult(String calculatedResult) {
+        this.calculatedResult = calculatedResult;
+    }
 }

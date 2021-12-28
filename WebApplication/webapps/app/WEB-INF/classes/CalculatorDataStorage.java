@@ -19,4 +19,8 @@ public class CalculatorDataStorage {
         calculorDataExpressionMap.put(calculorDataExpression.getExpressionID(), calculorDataExpression);
     }
 
+    public void processExpressionData(DatabaseManager databaseManager, CalculorDataExpression dataExpression) {
+        databaseManager.dbHandler(dataExpression);
+    }
+
 }

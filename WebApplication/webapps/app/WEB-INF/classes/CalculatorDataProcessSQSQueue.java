@@ -1,29 +1,22 @@
 import javax.ejb.Singleton;
-import java.util.ArrayList;
 import java.util.List;
 import software.amazon.awssdk.services.sqs.model.Message;
 
 @Singleton
-public class CalculatorAddDataToSQSQueue {
+public class CalculatorDataProcessSQSQueue {
 
-    private static CalculatorAddDataToSQSQueue singleInstanceCalculatorAddDataToSQSQueue = null;
+    private static CalculatorDataProcessSQSQueue singleInstanceCalculatorAddDataToSQSQueue = null;
 
-    private CalculatorAddDataToSQSQueue() { }
-    List<String> sqsQueueURL = new ArrayList<String>();
+    private CalculatorDataProcessSQSQueue() { }
 
-    public static CalculatorAddDataToSQSQueue getInstance()
+    public static CalculatorDataProcessSQSQueue getInstance()
     {
         if (singleInstanceCalculatorAddDataToSQSQueue == null)
-            singleInstanceCalculatorAddDataToSQSQueue = new CalculatorAddDataToSQSQueue();
+            singleInstanceCalculatorAddDataToSQSQueue = new CalculatorDataProcessSQSQueue();
         return singleInstanceCalculatorAddDataToSQSQueue;
     }
 
-    public void addSQSQueueURL(String queueURL) {
-        sqsQueueURL.add(queueURL);
-    }
-
     public void addMessageToQueue(String message, SqsMessageHandler sqsMessageHandler) {
-       //TODO: add message to queue as per the queue URL
         sqsMessageHandler.sendMessage(message);
     }
 
