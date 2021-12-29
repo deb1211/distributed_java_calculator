@@ -1,0 +1,11 @@
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/MessageHandler.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/CalculatorDataStorage.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/CalculorDataExpression.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/QueryServlet.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/Sqs.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/HelloServlet.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/CalculationServiceLambdaHandler.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/CalculatorDataProcessSQSQueue.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/SqsMessageHandler.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/DatabaseManager.java
+/home/ubuntuvm/Documents/distributed_java_calculator/src/main/java/com.distributedcalculator/CalculatorDataServlet.java

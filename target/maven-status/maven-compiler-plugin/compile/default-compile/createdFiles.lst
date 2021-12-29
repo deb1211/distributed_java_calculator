@@ -1,0 +1,11 @@
+com/distributedcalculator/DatabaseManager.class
+com/distributedcalculator/CalculatorDataProcessSQSQueue.class
+QueryServlet.class
+com/distributedcalculator/MessageHandler.class
+com/distributedcalculator/CalculorDataExpression.class
+com/distributedcalculator/CalculationServiceLambdaHandler.class
+com/distributedcalculator/Sqs.class
+HelloServlet.class
+com/distributedcalculator/CalculatorDataServlet.class
+com/distributedcalculator/SqsMessageHandler.class
+com/distributedcalculator/CalculatorDataStorage.class

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="distributed_java_calculator:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>distributed_java_calculator</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="distributed_java_calculator-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="distributed_java_calculator:war exploded" />
+    </root>
+  </artifact>
+</component>
