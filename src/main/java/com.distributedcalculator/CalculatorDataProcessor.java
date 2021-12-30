@@ -42,13 +42,14 @@ public class CalculatorDataProcessor extends HttpServlet {
 
         //add to SQS here
         SqsMessageHandler sqsMessageHandler = new SqsMessageHandler();
+        sqsMessageHandler.createQueue();
         CalculatorDataProcessSQSQueue calculatorDataProcessSQSQueue = CalculatorDataProcessSQSQueue.getInstance();
         String message = dataExpression.getOperator() +","+dataExpression.getOperandFirst()+","
                 +dataExpression.getOperandSecond()+","+dataExpression.getExpressionID();
         calculatorDataProcessSQSQueue.addMessageToQueue(message, sqsMessageHandler);
 
         List<Message> listMessages = calculatorDataProcessSQSQueue.receiveMessage(sqsMessageHandler);
-
+        calculatorDataProcessSQSQueue.deleteMessageFromQueue(listMessages, sqsMessageHandler);
 
         for (Message messageSQS : listMessages) {
             List<String> expressionParameters = new LinkedList<String>(Arrays.asList(messageSQS.body().split(",")));

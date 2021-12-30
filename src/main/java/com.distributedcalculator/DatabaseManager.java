@@ -15,6 +15,7 @@ public class DatabaseManager {
     public void dbHandler(CalculorDataExpression dataExpression) {
         try
         {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/distributed_calculator_application_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                     "root", "password");
@@ -52,7 +53,7 @@ public class DatabaseManager {
     }
 
     public void insertIntoDatabaseCalculatedResult (CalculorDataExpression dataExpression) {
-        StringBuilder stringBuilder = new StringBuilder();
+/*        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("insert into calculationstable (operator, operandFirst, operandSecond, " +
                 "calculatedresult, calculorDataExpressionID) VALUES (");
         stringBuilder.append("\"" + dataExpression.getOperator());
@@ -61,19 +62,25 @@ public class DatabaseManager {
         stringBuilder.append("\"" + dataExpression.getCalculatedResult() + "\"");
         stringBuilder.append("\"" + dataExpression.getExpressionID() + "\")");
 
-        String sqlStr = stringBuilder.toString();
-
-/*        String sqlStr = "insert into calculationstable (operator, operandFirst, operandSecond, " +
-                "calculatedresult, calculorDataExpressionID) VALUES (" + "\"" + dataExpression.getOperator()
-                + "\"" + dataExpression.getOperandFirst() + "\""
-                + "\"" + dataExpression.getOperandSecond() + "\""
-                + "\"" + dataExpression.getCalculatedResult() + "\""
-                + "\"" + dataExpression.getExpressionID() + "\")";*/
+        String sqlStr = stringBuilder.toString();*/
 
         try {
-            ResultSet rset = statement.executeQuery(sqlStr);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/distributed_calculator_application_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+                    "root", "password");
+
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into calculationstable (operator, operandFirst, operandSecond, " +
+                    "calculatedresult, calculorDataExpressionID) VALUES ( ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, dataExpression.getOperator());
+            preparedStatement.setString(2, dataExpression.getOperandFirst());
+            preparedStatement.setString(3, dataExpression.getOperandSecond());
+            preparedStatement.setString(4, dataExpression.getCalculatedResult());
+            preparedStatement.setString(5, dataExpression.getExpressionID());
+
+            preparedStatement.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
 

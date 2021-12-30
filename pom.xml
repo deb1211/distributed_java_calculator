@@ -24,6 +24,8 @@
                         </resource>
                     </webResources>
                     <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                    <warName>app</warName>
+                    <outputDirectory>WebApplication/webapps</outputDirectory>
                 </configuration>
             </plugin>
 <!--            <plugin>

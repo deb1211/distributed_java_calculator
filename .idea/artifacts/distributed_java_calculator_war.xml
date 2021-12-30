@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="distributed_java_calculator-1.0-SNAPSHOT.war">
+    <root id="archive" name="app.war">
       <element id="artifact" artifact-name="distributed_java_calculator:war exploded" />
     </root>
   </artifact>
