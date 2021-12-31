@@ -34,7 +34,7 @@ public class DatabaseManager {
 
             PreparedStatement preparedStatement = connection.prepareStatement("select * from calculationstable where operator = ?"
                     + " AND operandFirst = ?"
-                    + " AND operandSecond = ?");
+                    + " AND operandSecond = ? LIMIT 1");
 
             preparedStatement.setString(1, dataExpression.getOperator());
             preparedStatement.setString(2, dataExpression.getOperandFirst());

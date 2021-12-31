@@ -71,6 +71,7 @@ public class CalculatorDataProcessor extends HttpServlet {
             json += "\"operandFirst\": " + JSONObject.quote(dataExpression.getOperandFirst()) + ",\n";
             json += "\"operandSecond\": " + JSONObject.quote(dataExpression.getOperandSecond()) + "\n";
             json += "\"calculorDataExpressionID\": " + JSONObject.quote(dataExpression.getExpressionID()) + "\n";
+            json += "\"calculatedResult\": " + JSONObject.quote(dataExpression.getCalculatedResult()) + "\n";
             json += "}";
             response.getOutputStream().println(json);
         }
