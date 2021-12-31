@@ -9,7 +9,6 @@ public class CalculationServiceLambdaHandler implements
     @Override
     public Object handleRequest(Object input, Context context) {
 
-
         CalculatorDataExpression calculorDataExpression = (CalculatorDataExpression) input;
         calculatorComputeService(calculorDataExpression);
 

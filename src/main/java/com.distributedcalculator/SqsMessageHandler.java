@@ -33,7 +33,6 @@ public class SqsMessageHandler implements MessageHandler{
         this.secretAccessKey = secretAccessKey;
     }
 
-
     public void createQueue() {
         queue = sqsWithCredentials.createQueue("createQueue");
     }

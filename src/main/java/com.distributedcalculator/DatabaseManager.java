@@ -14,18 +14,6 @@ public class DatabaseManager {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/distributed_calculator_application_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                     "root", "password");
-/*
-            statement = connection.createStatement();
-            // Step 3: Execute a SQL SELECT query
-            String sqlStr = "select * from calculationstable where operator = " + dataExpression.getOperator()
-                    + " AND operandFirst = " + dataExpression.getOperandFirst()
-                    + " AND operandSecond = " + dataExpression.getOperandSecond()
-                    ;
-
-            //fix the sql here..
-
-            ResultSet rset = statement.executeQuery(sqlStr);
-*/
 
             PreparedStatement preparedStatement = connection.prepareStatement("select * from calculationstable where operator = ?"
                     + " AND operandFirst = ?"
@@ -48,16 +36,6 @@ public class DatabaseManager {
     }
 
     public void insertIntoDatabaseCalculatedResult (CalculatorDataExpression dataExpression) {
-/*        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("insert into calculationstable (operator, operandFirst, operandSecond, " +
-                "calculatedresult, calculorDataExpressionID) VALUES (");
-        stringBuilder.append("\"" + dataExpression.getOperator());
-        stringBuilder.append("\"" + dataExpression.getOperandFirst() + "\"");
-        stringBuilder.append("\"" + dataExpression.getOperandSecond() + "\"");
-        stringBuilder.append("\"" + dataExpression.getCalculatedResult() + "\"");
-        stringBuilder.append("\"" + dataExpression.getExpressionID() + "\")");
-
-        String sqlStr = stringBuilder.toString();*/
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -77,9 +55,5 @@ public class DatabaseManager {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
     }
-
-
 }
