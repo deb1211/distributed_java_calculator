@@ -8,7 +8,7 @@ import java.util.Map;
 //We will use Mysql data storage
 @Singleton
 public class CalculatorDataStorage {
-    private Map<String, CalculorDataExpression> calculorDataExpressionMap = new HashMap<>();
+    private Map<String, CalculatorDataExpression> calculorDataExpressionMap = new HashMap<>();
 
     private CalculatorDataStorage() {};
 
@@ -17,15 +17,15 @@ public class CalculatorDataStorage {
         return calculatorDataStorage;
     }
 
-    public CalculorDataExpression getCalculatorDataExpression(String expressionID) {
+    public CalculatorDataExpression getCalculatorDataExpression(String expressionID) {
         return calculorDataExpressionMap.get(expressionID);
     }
 
-    public void putCalculorDataExpression(CalculorDataExpression calculorDataExpression) {
+    public void putCalculorDataExpression(CalculatorDataExpression calculorDataExpression) {
         calculorDataExpressionMap.put(calculorDataExpression.getExpressionID(), calculorDataExpression);
     }
 
-    public void processExpressionData(DatabaseManager databaseManager, CalculorDataExpression dataExpression) {
+    public void processExpressionData(DatabaseManager databaseManager, CalculatorDataExpression dataExpression) {
         databaseManager.dbHandler(dataExpression);
     }
 

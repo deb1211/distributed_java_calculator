@@ -1,10 +1,5 @@
 package com.distributedcalculator;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 public class DatabaseManager {
@@ -12,7 +7,7 @@ public class DatabaseManager {
     private Connection connection = null;
     private Statement statement = null;
 
-    public void dbHandler(CalculorDataExpression dataExpression) {
+    public void dbHandler(CalculatorDataExpression dataExpression) {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -52,7 +47,7 @@ public class DatabaseManager {
         }
     }
 
-    public void insertIntoDatabaseCalculatedResult (CalculorDataExpression dataExpression) {
+    public void insertIntoDatabaseCalculatedResult (CalculatorDataExpression dataExpression) {
 /*        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("insert into calculationstable (operator, operandFirst, operandSecond, " +
                 "calculatedresult, calculorDataExpressionID) VALUES (");

@@ -1,6 +1,6 @@
 package com.distributedcalculator;
 
-public class CalculorDataExpression {
+public class CalculatorDataExpression {
     private String operator;
     private String operandFirst;
     private String operandSecond;
@@ -8,7 +8,7 @@ public class CalculorDataExpression {
     private String calculatedResult;
     private boolean requireCalculation = true;
 
-    public CalculorDataExpression(String operator, String operandFirst, String operandSecond, String calculatorDataExpressionID) {
+    public CalculatorDataExpression(String operator, String operandFirst, String operandSecond, String calculatorDataExpressionID) {
         this.operator = operator;
         this.operandFirst = operandFirst;
         this.operandSecond = operandSecond;

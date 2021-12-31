@@ -29,9 +29,9 @@ public class CalculatorDataProcessor extends HttpServlet {
         String operandSecond = "12";
         String calculorDataExpressionID = "testID123";
 
-        CalculatorDataStorage.getCalculatorDataStorage().putCalculorDataExpression(new CalculorDataExpression(operator, operandFirst, operandSecond, expressionID));
+        CalculatorDataStorage.getCalculatorDataStorage().putCalculorDataExpression(new CalculatorDataExpression(operator, operandFirst, operandSecond, expressionID));
 
-        CalculorDataExpression dataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(expressionID);
+        CalculatorDataExpression dataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(expressionID);
         DatabaseManager databaseManager = new DatabaseManager();
         CalculatorDataStorage.getCalculatorDataStorage().processExpressionData(databaseManager, dataExpression);
 
@@ -51,7 +51,7 @@ public class CalculatorDataProcessor extends HttpServlet {
                 List<String> expressionParameters = new LinkedList<String>(Arrays.asList(messageSQS.body().split(",")));
                 String dataExpressionID = expressionParameters.get(3);
 
-                CalculorDataExpression retrieveddataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(dataExpressionID);
+                CalculatorDataExpression retrieveddataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(dataExpressionID);
 
                 //requesthandler lambda
                 CalculationServiceLambdaHandler calculationServiceLambdaHandler = new CalculationServiceLambdaHandler();
@@ -112,9 +112,9 @@ public class CalculatorDataProcessor extends HttpServlet {
         uniqueExpressionID = random.nextInt(Integer.MAX_VALUE);
         String expressionID = String.valueOf(uniqueExpressionID);
 
-        CalculatorDataStorage.getCalculatorDataStorage().putCalculorDataExpression(new CalculorDataExpression(operator, operandFirst, operandSecond, expressionID));
+        CalculatorDataStorage.getCalculatorDataStorage().putCalculorDataExpression(new CalculatorDataExpression(operator, operandFirst, operandSecond, expressionID));
 
-        CalculorDataExpression dataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(expressionID);
+        CalculatorDataExpression dataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(expressionID);
         DatabaseManager databaseManager = new DatabaseManager();
         CalculatorDataStorage.getCalculatorDataStorage().processExpressionData(databaseManager, dataExpression);
 
@@ -134,7 +134,7 @@ public class CalculatorDataProcessor extends HttpServlet {
                 List<String> expressionParameters = new LinkedList<String>(Arrays.asList(messageSQS.body().split(",")));
                 String dataExpressionID = expressionParameters.get(3);
 
-                CalculorDataExpression retrieveddataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(dataExpressionID);
+                CalculatorDataExpression retrieveddataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(dataExpressionID);
 
                 //requesthandler lambda
                 CalculationServiceLambdaHandler calculationServiceLambdaHandler = new CalculationServiceLambdaHandler();

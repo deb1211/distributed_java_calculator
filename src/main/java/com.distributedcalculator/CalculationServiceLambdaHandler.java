@@ -10,13 +10,13 @@ public class CalculationServiceLambdaHandler implements
     public Object handleRequest(Object input, Context context) {
 
 
-        CalculorDataExpression calculorDataExpression = (CalculorDataExpression) input;
+        CalculatorDataExpression calculorDataExpression = (CalculatorDataExpression) input;
         calculatorComputeService(calculorDataExpression);
 
         return null;
     }
 
-    public void calculatorComputeService(CalculorDataExpression calculorDataExpression) {
+    public void calculatorComputeService(CalculatorDataExpression calculorDataExpression) {
         double firstOperand = Integer.parseInt(calculorDataExpression.getOperandFirst());
         double secondOperand = Integer.parseInt(calculorDataExpression.getOperandSecond());
         String operator = calculorDataExpression.getOperator();
