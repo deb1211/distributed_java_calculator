@@ -39,6 +39,10 @@ public class CalculorDataExpression {
         this.requireCalculation = requireCalculation;
     }
 
+    public boolean getRequireCalculation() {
+        return requireCalculation;
+    }
+
     public void setCalculatedResult(String calculatedResult) {
         this.calculatedResult = calculatedResult;
     }

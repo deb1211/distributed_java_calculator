@@ -40,31 +40,32 @@ public class CalculatorDataProcessor extends HttpServlet {
         /*databaseManager.dbHandler(dataExpression);*/
         CalculatorDataStorage.getCalculatorDataStorage().processExpressionData(databaseManager, dataExpression);
 
-        //add to SQS here
-        SqsMessageHandler sqsMessageHandler = new SqsMessageHandler();
-        sqsMessageHandler.createQueue();
-        CalculatorDataProcessSQSQueue calculatorDataProcessSQSQueue = CalculatorDataProcessSQSQueue.getInstance();
-        String message = dataExpression.getOperator() +","+dataExpression.getOperandFirst()+","
-                +dataExpression.getOperandSecond()+","+dataExpression.getExpressionID();
-        calculatorDataProcessSQSQueue.addMessageToQueue(message, sqsMessageHandler);
+        if (dataExpression.getRequireCalculation()) {
+            //add to SQS here
+            SqsMessageHandler sqsMessageHandler = new SqsMessageHandler();
+            sqsMessageHandler.createQueue();
+            CalculatorDataProcessSQSQueue calculatorDataProcessSQSQueue = CalculatorDataProcessSQSQueue.getInstance();
+            String message = dataExpression.getOperator() + "," + dataExpression.getOperandFirst() + ","
+                    + dataExpression.getOperandSecond() + "," + dataExpression.getExpressionID();
+            calculatorDataProcessSQSQueue.addMessageToQueue(message, sqsMessageHandler);
 
-        List<Message> listMessages = calculatorDataProcessSQSQueue.receiveMessage(sqsMessageHandler);
-        calculatorDataProcessSQSQueue.deleteMessageFromQueue(listMessages, sqsMessageHandler);
+            List<Message> listMessages = calculatorDataProcessSQSQueue.receiveMessage(sqsMessageHandler);
+            calculatorDataProcessSQSQueue.deleteMessageFromQueue(listMessages, sqsMessageHandler);
 
-        for (Message messageSQS : listMessages) {
-            List<String> expressionParameters = new LinkedList<String>(Arrays.asList(messageSQS.body().split(",")));
-            String dataExpressionID = expressionParameters.get(3);
+            for (Message messageSQS : listMessages) {
+                List<String> expressionParameters = new LinkedList<String>(Arrays.asList(messageSQS.body().split(",")));
+                String dataExpressionID = expressionParameters.get(3);
 
-            CalculorDataExpression retrieveddataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(dataExpressionID);
+                CalculorDataExpression retrieveddataExpression = CalculatorDataStorage.getCalculatorDataStorage().getCalculatorDataExpression(dataExpressionID);
 
-            //requesthandler lambda
-            CalculationServiceLambdaHandler calculationServiceLambdaHandler = new CalculationServiceLambdaHandler();
-            calculationServiceLambdaHandler.handleRequest((Object)retrieveddataExpression,null);
+                //requesthandler lambda
+                CalculationServiceLambdaHandler calculationServiceLambdaHandler = new CalculationServiceLambdaHandler();
+                calculationServiceLambdaHandler.handleRequest((Object) retrieveddataExpression, null);
 
-            //to this point the value is calculated
-            databaseManager.insertIntoDatabaseCalculatedResult(dataExpression);
+                //to this point the value is calculated
+                databaseManager.insertIntoDatabaseCalculatedResult(dataExpression);
+            }
         }
-
         if(dataExpression != null) {
             String json = "{\n";
             json += "\"operator\": " + JSONObject.quote(dataExpression.getOperator()) + ",\n";
